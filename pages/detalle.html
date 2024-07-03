@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <script src="https://kit.fontawesome.com/7a7df7520d.js" crossorigin="anonymous"></script>
+        <script src="../js/glide.min.js"></script>
+
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/glide.core.min.css">
+        <link rel="stylesheet" href="../css/glide.theme.min.css">
+        
+        <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="../css/styles.css">
+        <title>Detalle | Popi Impresiones 3D</title>
+    </head>
+    <body>
+      <header>
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid nav-header">
+            <a class="navbar-brand" href="../index.html"><img src="../assets/img/logo.svg" alt="logo Popi"
+                class="logo me-2 jello-horizontal"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="collapse navbar-collapse w-100 justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav ul_nav text-center">
+              <a class="nav-link me-2" href="../index.html#productos">Productos</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+        <main class="container" id="main_detalle">
+          <div class="row mt-5">
+            <div class="carousel_detalle col-sm-12 col-md-4 my-sm-3">
+              <div class="images glide" id="carousel">
+                <div class="glide__track" data-glide-el="track">
+                  <ul class="glide__slides" id="carousel_detalle_list">
+                  </ul>
+                </div>
+                <div class="glide__bullets" data-glide-el="controls[nav]" id="bullets_carousel">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-8 text-center" id="detalle">
+              <h1 class="my-2 fw-bolder font-color-main" id="titulo"></h1>
+              <p class="my-2" id="descripcion"></p>
+              <p id="precio" class="fw-bold"></p>
+              <p class="my-2 fst-italic">(Recorda que podés elegir el color que quieras para tu modelo. Preguntar por disponiblidad)</p>
+              <p>Encargá tu producto por mensaje tocando el siguiente boton: <a id="wspBtn" href=""><i class="fa-brands fa-whatsapp mx-2"></i></a></p>
+            </div>
+          </div>
+        </main>
+        <footer class="mt-5" id="footer_detalle"> 
+          <div class="d-flex justify-content-center">
+            <div class="p-2"><a href="https://www.instagram.com/popi.impresiones3d/" class="text-decoration-none" target="_blank"><i class="fa-brands fa-instagram"></i></a></div>
+            <div class="p-2"><a href="https://www.facebook.com/profile.php?id=61556740706206" class="text-decoration-none" target="_blank"><i class="fa-brands fa-facebook"></i></a></div>
+            <div class="p-2"><a href="https://api.whatsapp.com/send?phone=541168461698" class="text-decoration-none" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></div>
+          </div>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="../js/api_productos_detalle.js"></script>
+
+    </body>
+
+</html>
