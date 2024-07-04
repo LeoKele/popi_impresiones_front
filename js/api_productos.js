@@ -1,20 +1,30 @@
 //! Datos de la API
-const API_SERVER = 'http://localhost:8080/apiproductos';
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json'
-    }
-}
+// const API_SERVER = 'http://localhost:8080/apiproductos';
+// const options = {
+//     method: 'GET',
+//     headers: {
+//         accept: 'application/json'
+//     }
+// }
+
+//Ruta del JSON 
+const productosJSON = '../assets/productos.json'
 
 //! Función cargar productos
 const cargarProductos = async () =>{
     try {
-        const response = await fetch(`${API_SERVER}/productos`, options);
+        // const response = await fetch(`${API_SERVER}/productos`, options);
         // console.log(response);
 
-        const productos = await response.json(); // Convertimos la respuesta a JSON
+        const response = await fetch(productosJSON); //Obtener archivo JSON local
+        if (!response.ok){
+            throw new Error('Error al cargar JSON')
+        }
+        const productos = await response.json();
         console.log(productos);
+        
+        // const productos = await response.json(); // Convertimos la respuesta a JSON
+        // console.log(productos);
 
         const productosSection = document.getElementById('productosSection');
         productosSection.innerHTML= '';
@@ -41,7 +51,8 @@ function crearTarjetaProducto(producto){
 
     const cardImg = document.createElement('img');
     cardImg.classList.add('card-img', 'img-fluid');
-    cardImg.src = `assets/img/productos/${producto.imagenes[0]}`;
+    // cardImg.src = `assets/img/productos/${producto.imagenes[0]}`;
+    cardImg.src = `assets/img/productos/${producto.imagen}`;
     cardImg.alt = producto.nombre;
     cardImg.loading = 'lazy';
 
