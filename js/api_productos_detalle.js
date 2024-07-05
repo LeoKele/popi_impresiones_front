@@ -8,7 +8,7 @@
 // }
 
 //Ruta del JSON 
-const productosJSON = '../assets/productos_detalle.json'
+const productosJSON = '../assets/json/productos_detalle.json'
 
 const params = new URLSearchParams(window.location.search);
 const productoId = params.get('id');
@@ -26,14 +26,12 @@ const cargarProducto = async (id = productoId) =>{
 
         // const productos = await response.json(); // Convertimos la respuesta a JSON
 
+        const ProductoElegido = binarySearchById(productos,id);
+        // console.log(ProductoElegido);
+        //const producto = procesarProducto(productos[id-1]);
+        const producto = procesarProducto(ProductoElegido);
 
-        //*Busqueda del producto
-        //*(lo mejor seria que el api devuelva solo el producto requerido, no todos)
-        const productoBuscado = buscarProductoPorId(id, productos);
-        console.log(productoBuscado);
-
-        const producto = procesarProducto(productoBuscado);
-        console.log(producto);
+        // console.log(producto);
 
         // Verificar y asegurar que producto.imagenes sea siempre un array
         // producto.imagenes = Array.isArray(producto.imagenes) ? producto.imagenes : [];
@@ -112,33 +110,26 @@ function procesarProducto(productos) {
     }));
 }
 
+cargarProducto();
 
-//! Realizamos una busqueda binaria para encontrar el producto que corresponde al id. 
-function buscarProductoPorId(idBuscado, productosJson) {
-    // productosJson.sort((a, b) => a.id - b.id);
 
-    let inicio = 0;
-    let fin = productosJson.length - 1;
+//! Buscamos la posicion en la que se encuentra el array con el id deseado
+function binarySearchById(arr, targetId) {
+    let left = 0;
+    let right = arr.length - 1;
 
-    while (inicio <= fin) {
-        const medio = Math.floor((inicio + fin) / 2);
-        const productoActual = productosJson[medio];
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+        let midId = parseInt(arr[mid].id);
 
-        if (productoActual.id == idBuscado) {
-            // Encontramos el producto, lo retornamos
-            return productoActual;
-        } else if (productoActual.id < idBuscado) {
-            // El producto buscado está en la mitad derecha
-            inicio = medio + 1;
+        if (midId === parseInt(targetId)) {
+            return arr[mid];
+        } else if (midId < parseInt(targetId)) {
+            left = mid + 1;
         } else {
-            // El producto buscado está en la mitad izquierda
-            fin = medio - 1;
+            right = mid - 1;
         }
     }
 
-    // Si llegamos aquí, el producto no fue encontrado
-    return null;
+    return null; // Si no se encuentra el id
 }
-
-
-cargarProducto();

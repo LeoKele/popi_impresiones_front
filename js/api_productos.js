@@ -8,7 +8,7 @@
 // }
 
 //Ruta del JSON 
-const productosJSON = '../assets/productos.json'
+const productosJSON = '../assets/json/productos_index.json'
 
 //! Función cargar productos
 const cargarProductos = async () =>{
