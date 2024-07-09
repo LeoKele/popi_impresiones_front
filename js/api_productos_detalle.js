@@ -70,8 +70,7 @@ const cargarProducto = async (id = productoId) =>{
             perView: 1,
             width: 30,
             focusAt: 'center',
-            gap: 30,
-            autoPlay: 'true'
+            gap: 30
       
           };
           new Glide(".images",config).mount();
