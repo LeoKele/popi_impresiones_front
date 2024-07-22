@@ -88,7 +88,7 @@ const cargarProducto = async (id = productoId) =>{
           precio.textContent = `$${producto[0].precio}`;
 
           const wspBtn = document.getElementById('wspBtn');
-          wspBtn.href = `https://api.whatsapp.com/send?phone=+541168461698&text=Hola!,%20queria%20encargarte%20el%20producto%20%22${producto[0].nombre.replace(/ /g, "%20")}%22`;
+          wspBtn.href = `https://api.whatsapp.com/send?phone=+541133890751&text=Hola!,%20queria%20encargarte%20el%20producto%20%22${producto[0].nombre.replace(/ /g, "%20")}%22`;
           wspBtn.setAttribute('target','_blank');
 
 
