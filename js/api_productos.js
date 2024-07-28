@@ -48,6 +48,12 @@ function crearTarjetaProducto(producto){
     const cardInner = document.createElement('a');
     cardInner.classList.add('card');
     cardInner.href = `pages/detalle.html?id=${producto.id}`;
+    cardInner.addEventListener('click', function(){
+        gtag('event','click',{
+            'event_category':'Producto',
+            'event_label': producto.nombre
+        });
+    });
 
     const cardImg = document.createElement('img');
     cardImg.classList.add('card-img', 'img-fluid');
