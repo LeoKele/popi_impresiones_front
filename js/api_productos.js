@@ -21,7 +21,6 @@ const cargarProductos = async () =>{
             throw new Error('Error al cargar JSON')
         }
         const productos = await response.json();
-        console.log(productos);
         
         // const productos = await response.json(); // Convertimos la respuesta a JSON
         // console.log(productos);
