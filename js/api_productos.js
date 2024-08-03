@@ -22,6 +22,9 @@ const cargarProductos = async () =>{
         }
         const productos = await response.json();
         
+        //*Ordenamos productos por id de forma descendente
+        productos.sort((a, b) => b.id - a.id);
+        
         // const productos = await response.json(); // Convertimos la respuesta a JSON
         // console.log(productos);
 
