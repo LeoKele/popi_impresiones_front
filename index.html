@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="shortcut icon" href="assets/img/logo.png" type="image/x-icon">
   <script src="js/glide.min.js"></script>
+
   
   <link rel="stylesheet" type="text/css" href="css/glide.core.min.css">
   <link rel="stylesheet" href="css/glide.theme.min.css">
@@ -54,6 +55,19 @@
 
     <section class="m-5" id="productos">
       <h2 class="text-center mt-5 mb-4 font-color-main fw-bold">Nuestros Productos</h2>
+      <div class="row">
+        <div class="col-12">
+          <h5 class="text-center mt-5 mb-2 font-color-main fw-bold">Filtrar por Categoria</h5>
+        </div>
+        <div class="col-lg-10 col-sm-12">
+          <select id="categoriaSelect" class="form-select form-select-sm mb-2 select-estilo col-3">
+            <option value="" selected disabled>Seleccionar categoría</option>
+          </select>
+        </div>
+        <div class="col-lg-2 col-sm-12 resetFilterContainer">
+          <a class="btn-custom" id="resetFilterBtn">Borrar Filtro</a>
+        </div>
+      </div>
       <div class="row" id="productosSection">
     </section>
   </main>

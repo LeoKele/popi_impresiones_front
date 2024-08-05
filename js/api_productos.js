@@ -1,89 +1,116 @@
-//! Datos de la API
-// const API_SERVER = 'http://localhost:8080/apiproductos';
-// const options = {
-//     method: 'GET',
-//     headers: {
-//         accept: 'application/json'
-//     }
-// }
+document.addEventListener("DOMContentLoaded", async function() {
+    // Ruta de los JSON
+    const productosJSON = '../assets/json/productos_index.json';
+    const categoriasJSON = '../assets/json/categorias.json';
+    
+    const categoriasSelect = document.getElementById("categoriaSelect");
+    const productosSection = document.getElementById("productosSection");
+    const resetFilterBtn = document.getElementById("resetFilterBtn");
 
-//Ruta del JSON 
-const productosJSON = '../assets/json/productos_index.json'
-
-//! Función cargar productos
-const cargarProductos = async () =>{
     try {
-        // const response = await fetch(`${API_SERVER}/productos`, options);
-        // console.log(response);
-
-        const response = await fetch(productosJSON); //Obtener archivo JSON local
-        if (!response.ok){
-            throw new Error('Error al cargar JSON')
+        // Cargar categorías
+        const categoriasResponse = await fetch(categoriasJSON);
+        if (!categoriasResponse.ok) {
+            throw new Error('Error al cargar JSON de categorías');
         }
-        const productos = await response.json();
-        
+        const categorias = await categoriasResponse.json();
+
+        // Poblar el select con las categorías
+        categorias.forEach(categoria => {
+            const option = document.createElement('option');
+            option.value = categoria.id;
+            option.textContent = categoria.descripcion;
+            categoriasSelect.appendChild(option);
+        });
+
+
+        // Cargar productos
+        const productosResponse = await fetch(productosJSON);
+        if (!productosResponse.ok) {
+            throw new Error('Error al cargar JSON de productos');
+        }
+        const productos = await productosResponse.json();
+
         //*Ordenamos productos por id de forma descendente
         productos.sort((a, b) => b.id - a.id);
-        
-        // const productos = await response.json(); // Convertimos la respuesta a JSON
-        // console.log(productos);
-
-        const productosSection = document.getElementById('productosSection');
-        productosSection.innerHTML= '';
-
-        productos.forEach(producto =>{
-            
+        // Poblar la sección de productos inicialmente
+        productos.forEach(producto => {
             const productoCard = crearTarjetaProducto(producto);
             productosSection.appendChild(productoCard);
-        })
+        });
+
+        // Filtrar productos por categoría
+        categoriasSelect.addEventListener("change", function() {
+            const categoriaSelect = this.value;
+            filtrarProductosPorCategoria(categoriaSelect, productos);
+        });
+
+        // Restablecer filtro y mostrar todos los productos
+        resetFilterBtn.addEventListener("click", function() {
+            categoriasSelect.value = ""; // Restablecer el select
+            productosSection.innerHTML = ""; // Limpiar la sección de productos
+            // Mostrar todos los productos nuevamente
+            productos.forEach(producto => {
+                const productoCard = crearTarjetaProducto(producto);
+                productosSection.appendChild(productoCard);
+            });
+        });
 
     } catch (error) {
         console.error(error);
     }
-}
+});
 
-//! Función crear tarjeta producto
-function crearTarjetaProducto(producto){
+// Función para crear una tarjeta de producto
+function crearTarjetaProducto(producto) {
     const card = document.createElement('div');
-    card.classList.add('col-sm-12','col-md-6','col-lg-4','mb-sm-0','my-3');
+    card.classList.add('col-sm-12', 'col-md-6', 'col-lg-4', 'mb-sm-0', 'my-3');
 
     const cardInner = document.createElement('a');
     cardInner.classList.add('card');
     cardInner.href = `pages/detalle.html?id=${producto.id}`;
-    cardInner.addEventListener('click', function(){
-        gtag('event','click',{
-            'event_category':'Producto',
+    cardInner.addEventListener('click', function() {
+        gtag('event', 'click', {
+            'event_category': 'Producto',
             'event_label': producto.nombre
         });
     });
 
     const cardImg = document.createElement('img');
     cardImg.classList.add('card-img', 'img-fluid');
-    // cardImg.src = `assets/img/productos/${producto.imagenes[0]}`;
     cardImg.src = `assets/img/productos/${producto.imagen}`;
     cardImg.alt = producto.nombre;
     cardImg.loading = 'lazy';
+    cardImg.style.objectFit = 'cover'; // Asegura que la imagen se ajuste a la tarjeta
+    cardImg.style.height = '300px'; // Ajusta esta altura según tus necesidades
 
     const cardBody = document.createElement('div');
     cardBody.classList.add('card-img-overlay');
 
     const cardTitle = document.createElement('h5');
-    cardTitle.classList.add('position-absolute','top-50','start-50','translate-middle','fs-3');
+    cardTitle.classList.add('position-absolute', 'top-50', 'start-50', 'translate-middle', 'fs-3');
     cardTitle.textContent = producto.nombre;
 
-    //Añadimos los elementos a la tarjeta
     cardBody.appendChild(cardTitle);
     cardInner.appendChild(cardImg);
     cardInner.appendChild(cardBody);
-    //Agrego tarjeta a la columna de bootstrap
     card.appendChild(cardInner);
 
     return card;
-
 }
 
+// Función para filtrar productos por categoría
+function filtrarProductosPorCategoria(categoriaId, productos) {
+    // Limpiar las tarjetas existentes
+    const productosSection = document.getElementById("productosSection");
+    productosSection.innerHTML = "";
 
+    // Filtrar productos por categoría
+    const productosFiltrados = productos.filter(producto => producto.idCategoria == categoriaId);
 
-
-
-document.addEventListener("DOMContentLoaded",()=>{ cargarProductos()});
+    // Crear tarjetas para los productos filtrados
+    productosFiltrados.forEach(producto => {
+        const card = crearTarjetaProducto(producto);
+        productosSection.appendChild(card);
+    });
+}
