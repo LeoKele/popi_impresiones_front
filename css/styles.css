@@ -154,8 +154,43 @@ main {
     justify-content: center;
 }
 
-  
-/** Estilos para el selector de categorias */
+.instagram-media {
+    width: 100% !important;
+    min-width: unset !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+.card-instagram {
+    padding: 0 !important;
+    overflow: hidden;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.instagram-media {
+    width: 100%;
+    min-height: 600px; /* Establece una altura mínima */
+    height: auto; /* Ajusta la altura automáticamente */
+    object-fit: cover;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Ocultar el pie de las publicaciones de Instagram */
+.instagram-media .EmbedFooter {
+    display: none !important;
+}
+
+/* Ocultar elementos específicos de las publicaciones de Instagram */
+.instagram-media .EmbedFooter,
+.instagram-media .EmbedSocialProof,
+.instagram-media .EmbedCaption,
+.instagram-media .EmbedFeedback {
+    display: none !important;
+}
+
+/* Estilos para el selector de categorias */
 .select-estilo{
     background-color: var(--celeste-second);
     color: var(--azul-main);
@@ -236,16 +271,26 @@ main {
     }
 }
 
+
 @media (max-width: 767px){
     #detalle {
         border-left: none;
     }
 }
 
-/* .mensaje-aclaracion{
-    color: #
-} */
 
+/* .Feedback{
+    display: none;
+}
+.SocialProof{
+    display: none;
+}
+.Footer{
+    display: none;
+}
+.Caption{
+    display: none !important;
+} */
 
 
 /* ----------------------------------------------

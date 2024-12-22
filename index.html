@@ -70,6 +70,13 @@
       </div>
       <div class="row" id="productosSection">
     </section>
+    <hr style="color: var(--azul-main);">
+    <section class="m-5" id="hechosPorEncargue">
+      <h2 class="text-center mt-5 mb-4 font-color-main fw-bold">Hechos Por Encargue</h2>
+      <div class="row" id="hechosPorEncargueSection">
+        
+      </div>
+    </section>
   </main>
   <footer class="mt-5">
     <div class="d-flex justify-content-center">
@@ -106,7 +113,27 @@
   </script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/api_productos.js"></script>
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const hechosPorEncargueSection = document.getElementById("hechosPorEncargueSection");
+      const instagramUrls = [
+        "https://www.instagram.com/p/C3vp7_juwfT/?utm_source=ig_embed&amp;utm_campaign=loading",
+        "https://www.instagram.com/p/DDkhBmGJLWi/?utm_source=ig_embed&amp;utm_campaign=loading",
+        // "https://www.instagram.com/p/yet_another_post/?utm_source=ig_embed&amp;utm_campaign=loading"
+        // Add more Instagram URLs here
+      ];
 
-  
+      instagramUrls.forEach(url => {
+        const instagramCard = crearTarjetaInstagram(url);
+        hechosPorEncargueSection.appendChild(instagramCard);
+      });
+
+      // Reinitialize Instagram embeds
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
+      }
+    });
+  </script>
 </body>
 </html>

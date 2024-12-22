@@ -99,6 +99,32 @@ function crearTarjetaProducto(producto) {
     return card;
 }
 
+// Función para crear una tarjeta de Instagram
+function crearTarjetaInstagram(instagramUrl) {
+    const card = document.createElement('div');
+    card.classList.add('col-sm-12', 'col-md-6', 'col-lg-4', 'mb-sm-0', 'my-3');
+
+    const cardInner = document.createElement('div');
+    cardInner.classList.add('card', 'card-instagram');
+
+    const instagramEmbed = document.createElement('blockquote');
+    instagramEmbed.classList.add('instagram-media');
+    instagramEmbed.setAttribute('data-instgrm-captioned', '');
+    instagramEmbed.setAttribute('data-instgrm-permalink', instagramUrl);
+    instagramEmbed.setAttribute('data-instgrm-version', '14');
+    
+    // Simplified styling for better embedding
+    instagramEmbed.style.background = 'transparent';
+    instagramEmbed.style.border = 'none';
+    instagramEmbed.style.padding = '0';
+    instagramEmbed.style.width = '100%';
+
+    cardInner.appendChild(instagramEmbed);
+    card.appendChild(cardInner);
+
+    return card;
+}
+
 // Función para filtrar productos por categoría
 function filtrarProductosPorCategoria(categoriaId, productos) {
     // Limpiar las tarjetas existentes
