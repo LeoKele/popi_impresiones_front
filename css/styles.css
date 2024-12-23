@@ -366,6 +366,15 @@ body::-webkit-scrollbar-thumb {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.title-background-inline {
+    background-color: var(--celeste-second);
+    color: var(--azul-main);
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
 .subtitle-background {
     background-color: var(--celeste-second);
     color: var(--azul-main);
