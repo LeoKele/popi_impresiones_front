@@ -41,23 +41,27 @@
       <div class="collapse navbar-collapse w-100 justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav ul_nav text-center">
           <a class="nav-link me-2" href="#productos">Productos</a>
+          <a class="nav-link me-2" href="#hechosPorEncargue">Hechos por Encargue</a>
+          <a class="nav-link me-2" href="#nosotros">Nosotros</a>
         </div>
       </div>
     </nav>
   </header>
   <main class="container" id="main_container">
     <section class="text-center my-5 titulo-principal">
-      <h1 class="title my-2 fw-bolder font-color-main">Popi 3D</h1>
-      <h4 class="subtitle font-color-main">Aquí encontrarás todos los modelos que hemos impreso hasta el momento</h4>
+      <div class="title-container">
+        <h1 class="title my-2 fw-bolder font-color-main title-background d-inline-block">Popi 3D</h1>
+        <h4 class="subtitle font-color-main subtitle-background d-inline-block">Aquí encontrarás todos los modelos que hemos impreso hasta el momento</h4>
+      </div>
     </section>
 
     <hr style="color: var(--azul-main);">
 
-    <section class="m-5" id="productos">
-      <h2 class="text-center mt-5 mb-4 font-color-main fw-bold">Nuestros Productos</h2>
+    <section class="m-5 text-center" id="productos">
+      <h2 class="text-center mt-5 mb-4 font-color-main fw-bold title-background d-inline-block">Nuestros Productos</h2>
       <div class="row">
         <div class="col-12">
-          <h5 class="text-center mt-5 mb-2 font-color-main fw-bold">Filtrar por Categoria</h5>
+          <h5 class="text-center mt-5 mb-2 font-color-main fw-bold subtitle-background d-inline-block">Filtrar por Categoria</h5>
         </div>
         <div class="col-lg-10 col-sm-12">
           <select id="categoriaSelect" class="form-select form-select-sm mb-2 select-estilo col-3">
@@ -71,11 +75,16 @@
       <div class="row" id="productosSection">
     </section>
     <hr style="color: var(--azul-main);">
-    <section class="m-5" id="hechosPorEncargue">
-      <h2 class="text-center mt-5 mb-4 font-color-main fw-bold">Hechos Por Encargue</h2>
+    <section class="m-5 text-center" id="hechosPorEncargue">
+      <h2 class="text-center mt-5 mb-4 font-color-main fw-bold title-background d-inline-block">Hechos Por Encargue</h2>
       <div class="row" id="hechosPorEncargueSection">
         
       </div>
+    </section>
+    <hr style="color: var(--azul-main);">
+    <section class="m-5 text-center" id="nosotros">
+      <h2 class="text-center mt-5 mb-4 font-color-main fw-bold title-background d-inline-block">Nosotros</h2>
+      <p class="subtitle font-color-main nosotros-text">En Popi 3D nos especializamos en impresiones con plástico PLA de alta calidad, un material limpio y no tóxico que proviene de almidones vegetales, cuidando tanto tus proyectos como el medio ambiente. Creamos souvenirs y productos personalizados para hacer únicos tus eventos. Estamos ubicados en La Reja, Moreno, y nos comprometemos a ofrecerte soluciones precisas y de excelente calidad para tus necesidades. ¡Estamos a tu disposición!</p>
     </section>
   </main>
   <footer class="mt-5">

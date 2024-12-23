@@ -101,6 +101,7 @@ main {
 }
 .ul_nav a {
     color: var(--azul-main);
+    font-weight: bold; /* Increase font weight */
 }
 
 
@@ -343,4 +344,38 @@ body::-webkit-scrollbar-thumb {
 .scroll-top-button:hover{
     background-color: var(--azul-second);
     color: #212529;
+}
+
+/* New class for nosotros text */
+.nosotros-text {
+    background-color: var(--celeste-second);
+    color: var(--azul-main);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* New class for title background */
+.title-background {
+    background-color: var(--celeste-second);
+    color: var(--azul-main);
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle-background {
+    background-color: var(--celeste-second);
+    color: var(--azul-main);
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
